@@ -1,11 +1,11 @@
 # ibm-pak-ubi
-A container image based on Red Hat UBI 8.7 minimal, with the latest Red Hat OpenShift CLI and IBM Pak CLI v1.6.0
+A container image based on Red Hat UBI 8.7 minimal, with the latest Red Hat OpenShift CLI and IBM Pak CLI
 
 ## Content of the image
 
 - based on Red Hat UBI minimal 8.7
 - Red Hat OpenShift CLI
-- [IBM Pak CLI](https://github.com/IBM/ibm-pak) v1.6.0
+- [IBM Pak CLI](https://github.com/IBM/ibm-pak) v1.9.0
 - jq 
 - yq
 
