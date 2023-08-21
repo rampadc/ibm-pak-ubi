@@ -16,7 +16,7 @@ RUN curl -sLO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/o
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.32.2/yq_linux_amd64 -O /usr/local/bin/yq \
     && chmod +x /usr/local/bin/yq
 
-RUN curl -sLO https://github.com/IBM/ibm-pak/releases/download/v1.6.0/oc-ibm_pak-linux-amd64.tar.gz -o oc-ibm_pak-linux-amd64.tar.gz \
+RUN curl -sLO https://github.com/IBM/ibm-pak/releases/download/v1.9.0/oc-ibm_pak-linux-amd64.tar.gz -o oc-ibm_pak-linux-amd64.tar.gz \
     && tar -xzf oc-ibm_pak-linux-amd64.tar.gz \
     && install -o root -g root -m 0755 oc-ibm_pak-linux-amd64 /usr/local/bin/oc-ibm_pak \
     && chmod +x /usr/local/bin/oc-ibm_pak \
