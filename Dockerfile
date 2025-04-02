@@ -1,9 +1,9 @@
 FROM registry.access.redhat.com/ubi9/ubi-minimal:9.5
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
-RUN microdnf install curl ca-certificates wget tar gzip bash jq \
-    && microdnf update \
-    && microdnf clean all 
+RUN microdnf install -y ca-certificates wget tar gzip bash jq unzip \
+    && microdnf update -y \
+    && microdnf clean all
 
 RUN curl -sLO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz -o openshift-client-linux.tar.gz \
     && tar -xzf openshift-client-linux.tar.gz \
@@ -12,7 +12,7 @@ RUN curl -sLO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/o
     && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
     && rm openshift-client-linux.tar.gz
-    
+
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.32.2/yq_linux_amd64 -O /usr/local/bin/yq \
     && chmod +x /usr/local/bin/yq
 
@@ -23,14 +23,14 @@ RUN curl -sLO https://github.com/IBM/ibm-pak/releases/download/v1.17.0/oc-ibm_pa
     && rm LICENSE \
     && rm oc-ibm_pak-linux-amd64.tar.gz
 
-RUN curl -sLO https://get.helm.sh/helm-v3.17.2-linux-amd64.tar.gz \ 
-    && tar -zxf helm-v3.17.2-linux-amd64.tar.gz \ 
+RUN curl -sLO https://get.helm.sh/helm-v3.17.2-linux-amd64.tar.gz \
+    && tar -zxf helm-v3.17.2-linux-amd64.tar.gz \
     && mv linux-amd64/helm /usr/local/bin/helm \
-    && rm -rf linux-amd64
+    && rm -rf linux-amd64 \
     && chmod +x /usr/local/bin/helm
 
-RUN curl -sLO https://releases.hashicorp.com/vault/1.19.0/vault_1.19.0_linux_amd64.zip \ 
-    && tar -xf vault_1.19.0_linux_amd64.zip \ 
+RUN curl -sLO https://releases.hashicorp.com/vault/1.19.0/vault_1.19.0_linux_amd64.zip \
+    && unzip vault_1.19.0_linux_amd64.zip \
     && mv vault /usr/local/bin/vault \
     && chmod +x /usr/local/bin/vault \
     && rm LICENSE.txt
